@@ -79,13 +79,20 @@ While you cannot simply change the lambda_handler.py file easily in AWS, you can
 ## Step 8: create an "AWS Lambda Function" service
 - upload (direct or from S3) that function.zip file
 - Add permission to access S3 to the lambda-function:
-permissions-> execution role -> role name -> policy name -> permissions -> edit policy -> json -> add this (aligned with the rest) -> review policy -> save changes!
+There are a few ways to do this, and the AWS interface is perpetually changing. 
+Two basic approaches:
+1. manually add script to the policy
+2. use the AWS GUI to add pre-made policy items
+
+## Manual Method:
+#### permissions-> execution role -> role name -> policy name -> permissions -> edit policy -> json -> add this (aligned with the rest) -> review policy -> save changes!
+```
        {
            "Effect": "Allow",
            "Action": "s3:*",
            "Resource": "*"
        },
-
+```
 
 
 
