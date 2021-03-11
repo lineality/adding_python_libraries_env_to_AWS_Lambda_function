@@ -21,7 +21,7 @@ It is relatively simple to set up the AWS Lambda Function with additional python
 # Steps:
 
 ## Step 1: Project Repo 
-#### Create a project management repo (e.g. a github repo)
+#### Create a project repo to manage and share your code (e.g. a github repo)
 
 ## Step 2: Create Your Virtual Environment -> specifically "venv"
 #### (Note: AWS integration requires a venv (not a pipenv))
