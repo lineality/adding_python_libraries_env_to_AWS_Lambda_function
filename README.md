@@ -18,7 +18,8 @@
 It is relatively simple to set up the AWS Lambda Function with additional python libraries, but:
 1. The steps must be done exactly-correctly and sadly the official documentation is a bit lacking.
 2. It is more difficult to change that Lambda Function because the code is hidden from view when bundled with the virtual environment that contains the additional python libraries.
-3. zipped environments larger than ~50mb must be loaded to S3 first, then imported into AWS Lambda. 
+3. an older python 3.8 version needs to be used to make the environment (even though 3.9 is now the current python)
+4. zipped environments larger than ~50mb must be loaded to S3 first, then imported into AWS Lambda. 
 
 # Steps:
 
