@@ -12,11 +12,12 @@ AWS python Lambda-Functions come with some built-in python libraries but only a 
 - pandas
 - psycopg2 (for postgreSQL)
 
-#### Method: To add additional libraries we will be adding a virtual environment with additional python packages to the AWS Lambda Function.
+#### Method: To add additional libraries we will be uploading a zipped python-virtual-environment (which contains additional python packages) to the AWS Lambda Function.
 
 It is relatively simple to set up the AWS Lambda Function with additional python libraries, but:
 1. The steps must be done exactly-correctly and sadly the official documentation is a bit lacking.
 2. It is more difficult to change that Lambda Function because the code is hidden from view when bundled with the virtual environment that contains the additional python libraries.
+3. zipped environments larger than ~50mb must be loaded to S3 first, then imported into AWS Lambda. 
 
 # Steps:
 
@@ -34,23 +35,25 @@ https://packaging.python.org/guides/installing-using-pip-and-virtual-environment
 #### For more detailed install instructions see here:
 https://docs.google.com/document/d/1dZJI20D7uIknT1pdlTSmlHH1WPYdVhs2PSUyH1qdnUo/edit
 
-#### Run these 3 lines individually in a terminal:
+# Run these lines individually in a terminal:
+
+## Create your environment:
 ```
-python3 -m venv env
+$ python3 -m venv env
 (or)
-python -m venv env
+$ python -m venv env
 ```
 ## Active the Environment:
 ```
-source env/bin/activate
+$ source env/bin/activate
 ```
 
-## Step 3: Inside Your Virtual Environment 
+## Step 3: Inside Your Virtual Environment: 
 ### Add python packages:
 #### You can add your libraries individually or altogether if they are listed in a requirements.txt doc:
 
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ## Step 4: First Part of zip-sandwhich
@@ -61,7 +64,7 @@ pip install -r requirements.txt
 #### And Run this line exactly as it is: 
 
 ```
-zip -r9 ../../../../function.zip .
+$ zip -r9 ../../../../function.zip .
 ```
 #### This should zip all the files from the root to that packages folder
 #### Note: The resulting zip file will be made in the project root directory, not in the directory you traversed into, so...you won't see it created where you are (because it is somewhere else). 
@@ -74,7 +77,7 @@ zip -r9 ../../../../function.zip .
 #### Run this line exactly as it is: 
 
 ```
-zip -g ./function.zip -r lambda_function.py
+$ zip -g ./function.zip -r lambda_function.py
 ```
 
 ## Check: look in the zip folder and you should see your lambda_function.py file (along with many others)
@@ -104,7 +107,16 @@ Two basic approaches:
 #### (Note: you may want to add a less sweeping set of access for your project.)
 
 
+## Step 9: updating your lambda_function.py file
+#### There are generally two methods for updating your file, and both involve re-uploading the function.zip file to AWS:
+1. Update the file in your repo and re-run this command:
+```
+$ zip -g ./function.zip -r lambda_function.py
+```
+Then re-upload the function.zip to AWS.
 
+2. Open the zip file, make the changes, save, then click "update" on the popup window. (This may not be available on every OS?
+Then re-upload the function.zip to AWS.
 
 
 
