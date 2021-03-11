@@ -1,14 +1,22 @@
-# adding_python_libraries_to_AWS_Lambda_function
-adding_python_libraries_to_AWS_Lambda_function
-
-# Endpoint_with_Python_virtual_environment_AWS_Lambda_apiGateway
+#### adding python libraries to an AWS_Lambda_function
 
 # Overview: 
-We will be adding a virtual environment with additional python packages to the AWS Lambda Function
+AWS python Lambda-Functions come with some built-in python libraries but only a few. E.g. 
+
+####  These are included:
+- json
+- boto3
+
+#### These are NOT included:
+- numpy
+- pandas
+- psycopg2 (for postgreSQL)
+
+#### Method: To add additional libraries we will be adding a virtual environment with additional python packages to the AWS Lambda Function.
 
 It is relatively simple to set up the AWS Lambda Function with additional python libraries, but:
 1. The steps must be done exactly-correctly and sadly the official documentation is a bit lacking.
-2. It is more difficult to change the Lambda Function because it is hidden from view when bundled with the virtual environment that contains the additional python libraries.
+2. It is more difficult to change that Lambda Function because the code is hidden from view when bundled with the virtual environment that contains the additional python libraries.
 
 # Steps:
 
