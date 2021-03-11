@@ -1,7 +1,8 @@
-#### adding python libraries to an AWS_Lambda_function
+# Adding Python Libraries to an AWS-Lambda-function
 
 # Overview: 
-AWS python Lambda-Functions come with some built-in python libraries but only a few. E.g. 
+#### AWS python Lambda-Functions (part of one system for making endpoints, with AWS Lambda -Fucntions and AWS-api-Gateway) come with some built-in python libraries but only a few. 
+#### E.g. 
 
 ####  These are included:
 - json
