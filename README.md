@@ -101,6 +101,7 @@ Two basic approaches:
            "Resource": "*"
        },
 ```
+#### (Note: you may want to add a less sweeping set of access for your project.)
 
 
 
